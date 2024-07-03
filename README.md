@@ -36,7 +36,7 @@ O arquivo script.js contém a lógica para gerar senhas, calcular a qualidade da
 
 ## Instruções de Uso
  1.Clone o repositório:
-  git clone https://github.com/seu-usuario/GeradorDeSenha.git
+  https://github.com/Muacidevjava/Gerador-de-senha.git
 cd GeradorDeSenha
 
  2.Abra o arquivo index.html no navegador:
