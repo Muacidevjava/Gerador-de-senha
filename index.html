@@ -2,115 +2,118 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>Gerador de Senhas</title>
+    <title>Document</title>
   </head>
   <body>
     <main>
       <section class="hero">
-        <h1 class="title">Gerador de Senha</h1>
+        <h1 class="title">Gerador de senha</h1>
         <p class="subtitle">
-          Utilize o nosso Gerador oline para criar uma senha forte e segura.
+          Utilize o nosso gerador online para criar uma senha forte e segura.
         </p>
       </section>
+
       <section class="box">
         <div class="password">
           <div class="text">
             <input type="text" name="password" id="password" />
           </div>
-          <div class="action">
-            <button id="copy1"><img src="copy.svg" alt="" width="42" /></button>
-
+          <div class="actions">
+            <button id="copy-1">
+              <img src="copy.svg" width="42" />
+            </button>
             <button id="renew">
-              <img src="renew.svg" alt="" width="42" />
+              <img src="renew.svg" width="42" />
             </button>
           </div>
         </div>
         <div class="security-indicator">
-          <div
-            id="security-indicator-bar"
-            class="bar safe"
-            style="width: 90%"
-          ></div>
+          <div id="security-indicator-bar" class="bar" style="width: 90%"></div>
         </div>
-      </section class="box customize">
-      <h3 class="title">Personalizar</h3>
-      <div class="actions">
-         <div class="password-legth">
-        <p>Tamanho: <span id="password-length-text">16</span></p>
-        <input
-        type="range"
-        name="password-length"
-        id="password-length"
-        value="16"
-        min="4"
-        max="64"
-      />
-      </div>
-      <div class="config">
-        <label  class="checkbox-container">
-          <span class="text">Maiùsculas</span>
-          <input type="checkbox" id="uppercase-check" checked />
-          <span class="checkmark"></span>
-        </label>
-        <label  class="checkbox-container">
-          <span class="text">Números</span>
-          <input type="checkbox" id="NUmber-check" checked />
-          <span class="checkmark"></span>
-        </label>
-        <label  class="checkbox-container">
-          <span class="text">Símbolos</span>
-          <input type="checkbox" id="simbol-check" checked />
-          <span class="checkmark"></span>
-        </label>
-      </div>
-      </div>
-      <section>
-
       </section>
 
-      
-      <button id="copy2">Copiar senha</button>
+      <section class="box customize">
+        <h3 class="title">Personalizar</h3>
+        <div class="actions">
+          <div class="password-length">
+            <p>Tamanho: <span id="password-length-text">16</span></p>
+            <input
+              type="range"
+              name="password-length"
+              id="password-length"
+              class="slider"
+              value="16"
+              min="4"
+              max="64"
+            />
+          </div>
+          <div class="config">
+            <label class="checkbox-container">
+              <span class="text">Maiúsculas</span>
+              <input type="checkbox" id="uppercase-check" checked />
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">
+              <span class="text">Números</span>
+              <input type="checkbox" id="number-check" checked />
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">
+              <span class="text">Símbolos</span>
+              <input type="checkbox" id="symbol-check" checked />
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </section>
+       
+      <div class="submit">
+      <button id="copy-2">Copiar senha</button>
+    </div>
     </main>
     <script>
-      let passwordLenght = 16;
-      const inputEl = document.querySelector("#password");
+      const inputEl = document.querySelector("#password")
+
+      let passwordLength = 16
+
       function generatePassword() {
         const chars =
-          "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjlmnpqrstuvxz123456789!@#$%¨&*()_+=^~?;:<>,{}[]ªº°";
-        let password = "";
-        for (let i = 0; i < passwordLenght; i++) {
-          const randomNUmber = Math.floor(Math.random() * chars.length);
-          password += chars.substring(randomNUmber, randomNUmber + 1);
+          "abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789?!@&*()[]"
+
+        let password = ""
+
+        for (let i = 0; i < passwordLength; i++) {
+          const randomNumber = Math.floor(Math.random() * chars.length)
+          password += chars.substring(randomNumber, randomNumber + 1)
         }
 
-        inputEl.value = password;
+        inputEl.value = password
       }
-      function copy() {
-        navigator.clipboard.writeText(inputEl.value);
-      }
-      const passwordLenghtEl = document.querySelector("#password-length");
-      passwordLenghtEl.addEventListener("input", function () {
-        const passwordLenght = passwordLenghtEl.value;
 
-        generatePassword(password);
-      });
-      document.querySelector("#copy1").addEventListener("click", copy);
-      document.querySelector("#copy2").addEventListener("click", copy);
-      generatePassword();
+      function copy() {
+        navigator.clipboard.writeText(inputEl.value)
+      }
+
+      const passwordLengthEl = document.querySelector("#password-length")
+      passwordLengthEl.addEventListener("input", function () {
+        passwordLength = passwordLengthEl.value
+        generatePassword()
+      })
+
+      document.querySelector("#copy-1").addEventListener("click", copy)
+      document.querySelector("#copy-2").addEventListener("click", copy)
+
+      generatePassword()
     </script>
   </body>
 </html>
